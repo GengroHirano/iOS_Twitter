@@ -18,7 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *tweetTextView;
 @property (nonatomic, copy) NSString *identifier;
 @property(nonatomic, copy) NSString *name ;
-- (IBAction)editEndAction:(id)sender;
 - (IBAction)tweetButton:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)combert:(id)sender;

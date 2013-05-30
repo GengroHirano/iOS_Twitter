@@ -30,6 +30,20 @@
     
     NSLog(@"%@", _idStr) ;
     NSLog(@"%@", _identifier) ;
+    //アクセサリビューの作成(メインとフッターの2段構造になってる)
+    UIView *accessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)] ;
+    accessoryView.backgroundColor = [UIColor clearColor] ; //透明色
+    UIView *accessoryViewFutter = [[UIView alloc] initWithFrame:CGRectMake(0, 50, 320, 5)] ;
+    accessoryViewFutter.backgroundColor = [UIColor grayColor] ;
+    [accessoryView addSubview:accessoryViewFutter] ;
+    //ボタンの作成
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom] ;
+    [button setImage:[UIImage imageNamed:@"PullDownButton.png"] forState:UIControlStateNormal] ;
+    [button addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside] ;
+    button.frame = CGRectMake(281, 22, 40, 30) ;
+    [accessoryView addSubview:button] ;
+    
+    _tweetTextView.inputAccessoryView =  accessoryView ;
     if (_idStr != nil) {
         _tweetTextView.text = [NSString stringWithFormat:@"@%@ ",_name] ;
     }
@@ -41,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)editEndAction:(id)sender {
+- (void)endEdit:(id)sender{
     [_tweetTextView resignFirstResponder] ;
 }
 
